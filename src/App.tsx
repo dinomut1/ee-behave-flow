@@ -120,35 +120,37 @@ function Flow() {
   };
 
   return (
-    <ReactFlow
-      nodeTypes={customNodeTypes}
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-      onConnectStart={handleStartConnect}
-      onConnectEnd={handleStopConnect}
-      fitView
-      fitViewOptions={{ maxZoom: 1 }}
-      onPaneClick={handlePaneClick}
-      onPaneContextMenu={handlePaneContextMenu}
-    >
-      <Controls />
-      <Background
-        variant={BackgroundVariant.Lines}
-        color="#2a2b2d"
-        style={{ backgroundColor: "#1E1F22" }}
-      />
-      {nodePickerVisibility && (
-        <NodePicker
-          position={nodePickerVisibility}
-          filters={getNodePickerFilters(nodes, lastConnectStart)}
-          onPickNode={handleAddNode}
-          onClose={closeNodePicker}
+    <React.StrictMode>
+      <ReactFlow
+        nodeTypes={customNodeTypes}
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        onConnectStart={handleStartConnect}
+        onConnectEnd={handleStopConnect}
+        fitView
+        fitViewOptions={{ maxZoom: 1 }}
+        onPaneClick={handlePaneClick}
+        onPaneContextMenu={handlePaneContextMenu}
+      >
+        <Controls />
+        <Background
+          variant={BackgroundVariant.Lines}
+          color="#2a2b2d"
+          style={{ backgroundColor: "#1E1F22" }}
         />
-      )}
-    </ReactFlow>
+        {nodePickerVisibility && (
+          <NodePicker
+            position={nodePickerVisibility}
+            filters={getNodePickerFilters(nodes, lastConnectStart)}
+            onPickNode={handleAddNode}
+            onClose={closeNodePicker}
+          />
+        )}
+      </ReactFlow>
+    </React.StrictMode>
   );
 }
 
