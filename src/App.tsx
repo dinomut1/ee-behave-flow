@@ -19,6 +19,9 @@ import { getNodePickerFilters } from "./util/getPickerFilters";
 import { calculateNewEdge } from "./util/calculateNewEdge";
 import React from "react";
 
+import "reactflow/dist/style.css";
+import "./index.css";
+
 const graphJSON = rawGraphJSON as GraphJSON;
 
 const [initialNodes, initialEdges] = behaveToFlow(graphJSON);
