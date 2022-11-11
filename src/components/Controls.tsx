@@ -24,6 +24,7 @@ import { SaveModal } from "./SaveModal";
 import { flowToBehave } from "../transformers/flowToBehave";
 import { useReactFlow, Controls, ControlButton } from "reactflow";
 import { sleep } from "../util/sleep";
+import React from "react";
 
 const CustomControls = () => {
   const [loadModalOpen, setLoadModalOpen] = useState(false);

@@ -17,6 +17,7 @@ import { GraphJSON } from "behave-graph";
 import NodePicker from "./components/NodePicker";
 import { getNodePickerFilters } from "./util/getPickerFilters";
 import { calculateNewEdge } from "./util/calculateNewEdge";
+import React from "react";
 
 const graphJSON = rawGraphJSON as GraphJSON;
 
