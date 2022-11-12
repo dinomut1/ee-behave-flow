@@ -3,20 +3,20 @@
   align-items: center;
   justify-content: start;
   height: 1.75rem;
+}
 
-  .inputField {
-    background-color: #555;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    padding-left: 1em;
-    padding-right: 1em;
-    :disabled {
-      background-color: #aaa;
-    }
-  }
+.handle {
+  background-color: #333;
+}
 
-  .handle {
-    background-color: #333;
+.inputField {
+  background-color: #555;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  :disabled {
+    background-color: #aaa;
   }
 }
 
@@ -28,6 +28,39 @@
   padding-right: 1em;
 }
 
+.addNode {
+  background-color: #555;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.search {
+  padding-left: 1em;
+  padding-right: 1em;
+  input {
+    background-color: #666;
+    :disabled {
+      background-color: #888;
+    }
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
+
+.options {
+  max-height: 24em;
+  overflow-y: scroll;
+
+  .option {
+    padding: 1em;
+    cursor: pointer;
+    border-bottom-width: 1px;
+  }
+}
+
 .nodePicker {
   position: absolute;
   z-index: 10;
@@ -36,39 +69,6 @@
   background-color: #333;
   border-style: round;
   border-color: #888;
-
-  .addNode {
-    background-color: #555;
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-
-  .search {
-    padding-left: 1em;
-    padding-right: 1em;
-    input {
-      background-color: #666;
-      :disabled {
-        background-color: #888;
-      }
-      width: 100%;
-      padding-top: 1em;
-      padding-bottom: 1em;
-      padding-left: 2em;
-      padding-right: 2em;
-    }
-  }
-
-  .options {
-    max-height: 24em;
-    overflow-y: scroll;
-
-    .option {
-      padding: 1em;
-      cursor: pointer;
-      border-bottom-width: 1px;
-    }
-  }
 }
 
 .nodeContainer {
@@ -117,11 +117,13 @@
   }
 
   input[type='number'] {
+    appearance: textfield;
     -moz-appearance: textfield;
   }
 
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
+    appearance: none;
     -webkit-appearance: none;
   }
 
