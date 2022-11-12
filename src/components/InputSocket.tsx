@@ -1,13 +1,12 @@
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Connection, Handle, Position, useReactFlow } from "reactflow";
-import cx from "classnames";
 import { colors, valueTypeColorMap } from "../util/colors";
 import { InputSocketSpecJSON } from "behave-graph";
 import { isValidConnection } from "../util/isValidConnection";
 import { AutoSizeInput } from "./AutoSizeInput";
 import React from "react";
-import styles from "../style.scss"
+import styles from "../styles.module.scss"
 export type InputSocketProps = {
   connected: boolean;
   value: any | undefined;
@@ -34,11 +33,11 @@ export default function InputSocket({
   const showName = isFlowSocket === false || name !== "flow";
 
   return (
-    <div className={styles.InputSocket}>
+    <div className={styles.inputSocket}>
       {isFlowSocket && (
         <FontAwesomeIcon icon={faCaretRight} color="#ffffff" size="lg" />
       )}
-      {showName && <div className="capitalize mr-2">{name}</div>}
+      {showName && <div className={styles.socketName}>{name}</div>}
       {isFlowSocket === false && connected === false && (
         <>
           {valueType === "string" && (
@@ -87,7 +86,7 @@ export default function InputSocket({
         id={name}
         type="target"
         position={Position.Left}
-        className={cx(borderColor, connected ? backgroundColor : styles.inputField)}
+        className={styles.handle}
         isValidConnection={(connection: Connection) =>
           isValidConnection(connection, instance)
         }

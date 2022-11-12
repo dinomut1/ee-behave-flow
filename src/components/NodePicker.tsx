@@ -4,7 +4,7 @@ import { useOnPressKey } from "../hooks/useOnPressKey";
 import rawSpecJson from "behave-graph/dist/node-spec.json";
 import { NodeSpecJSON } from "behave-graph";
 import React from "react";
-import styles from "../style.scss"
+import styles from "../styles.module.scss"
 const specJSON = rawSpecJson as NodeSpecJSON[];
 
 const nodes = specJSON;
@@ -47,7 +47,7 @@ const NodePicker = ({
   });
 
   return (
-    <div
+    !!position && <div
       className={styles.nodePicker}
       style={{ top: position.y, left: position.x }}
     >
@@ -73,7 +73,6 @@ const NodePicker = ({
         ))}
       </div>
     </div>
-  );
-};
+)};
 
 export default NodePicker;

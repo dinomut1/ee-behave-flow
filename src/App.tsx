@@ -1,4 +1,4 @@
-import { MouseEvent as ReactMouseEvent, useCallback, useState } from "react";
+import React, { MouseEvent as ReactMouseEvent, useCallback, useState } from "react";
 import ReactFlow, {
   Background,
   BackgroundVariant,
@@ -17,10 +17,9 @@ import { GraphJSON } from "behave-graph";
 import NodePicker from "./components/NodePicker";
 import { getNodePickerFilters } from "./util/getPickerFilters";
 import { calculateNewEdge } from "./util/calculateNewEdge";
-import React from "react";
 
 import "reactflow/dist/style.css";
-import styles from "./style.scss";
+import styles from "./styles.module.scss";
 
 const graphJSON = rawGraphJSON as GraphJSON;
 

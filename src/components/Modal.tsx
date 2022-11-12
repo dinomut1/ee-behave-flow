@@ -1,6 +1,7 @@
 import React from "react";
 import { FC, PropsWithChildren } from "react";
 import { useOnPressKey } from "../hooks/useOnPressKey";
+import styles from "../styles.module.scss"
 
 export type ModalAction = {
   label: string;
@@ -26,27 +27,27 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
   if (open === false) return null;
 
   const actionColors = {
-    primary: "bg-teal-400 hover:bg-teal-500",
-    secondary: "bg-gray-400 hover:bg-gray-500",
+    primary: styles.primary,
+    secondary: styles.secondary,
   };
 
   return (
     <>
       <div
-        className="z-[19] fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+        className={styles.modalExit}
         onClick={onClose}
       ></div>
-      <div className="z-20 relative top-20 mx-auto border w-96 shadow-lg bg-white text-sm rounded-md">
-        <div className="p-3 border-b">
-          <h2 className="text-lg text-center font-bold">{title}</h2>
+      <div className={styles.Modal}>
+        <div className={styles.title}>
+          <h2>{title}</h2>
         </div>
-        <div className="p-3">{children}</div>
-        <div className="flex gap-3 p-3 border-t">
+        <div className={styles.children}>{children}</div>
+        <div className={styles.actions}>
           {actions.map((action, ix) => (
             <button
               key={ix}
               className={
-                "text-white p-2 w-full cursor-pointer " +
+                "cursor-pointer " +
                 (ix === actions.length - 1
                   ? actionColors.primary
                   : actionColors.secondary)

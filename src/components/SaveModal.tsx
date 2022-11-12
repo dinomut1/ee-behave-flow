@@ -3,6 +3,7 @@ import { FC, useMemo, useRef, useState } from "react";
 import { useEdges, useNodes } from "reactflow";
 import { flowToBehave } from "../transformers/flowToBehave";
 import { Modal } from "./Modal";
+import styles from "../styles.module.scss"
 
 export type SaveModalProps = { open?: boolean; onClose: () => void };
 
@@ -38,8 +39,8 @@ export const SaveModal: FC<SaveModalProps> = ({ open = false, onClose }) => {
       onClose={onClose}
     >
       <textarea
+        className={styles.saveTextArea}
         ref={ref}
-        className="border border-gray-300 w-full p-2 h-32"
         defaultValue={jsonString}
       ></textarea>
     </Modal>

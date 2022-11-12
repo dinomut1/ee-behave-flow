@@ -1,10 +1,9 @@
 import { NodeSpecJSON } from "behave-graph";
 import { PropsWithChildren } from "react";
-import cx from "classnames";
 
 import { categoryColorMap, colors } from "../util/colors";
 import React from "react";
-import styles from "../style.scss"
+import styles from "../styles.module.scss"
 
 type NodeProps = {
   title: string;
@@ -30,11 +29,11 @@ export default function NodeContainer({
     <div
       className={styles.nodeContainer}
     >
-      <div className={`${backgroundColor} ${textColor} px-2 py-1 rounded-t`}>
+      <div className={styles.title}>
         {title}
       </div>
       <div
-        className={`flex flex-col gap-2 py-2 border-l border-r border-b ${borderColor} `}
+        className={styles.content}
       >
         {children}
       </div>

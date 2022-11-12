@@ -6,7 +6,7 @@ import OutputSocket from "./OutputSocket";
 import { useChangeNodeData } from "../hooks/useChangeNodeData";
 import { isHandleConnected } from "../util/isHandleConnected";
 import React from "react";
-import styles from "../style.scss"
+import styles from "../styles.module.scss"
 
 type NodeProps = FlowNodeProps & {
   spec: NodeSpecJSON;

@@ -1,11 +1,11 @@
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Connection, Handle, Position, useReactFlow } from "reactflow";
-import cx from "classnames";
 import { colors, valueTypeColorMap } from "../util/colors";
 import { OutputSocketSpecJSON } from "behave-graph";
 import { isValidConnection } from "../util/isValidConnection";
 import React from "react";
+import styles from "../styles.module.scss"
 
 export type OutputSocketProps = {
   connected: boolean;
@@ -26,14 +26,14 @@ export default function OutputSocket({
   const showName = isFlowSocket === false || name !== "flow";
 
   return (
-    <div className="flex grow items-center justify-end h-7">
-      {showName && <div className="capitalize">{name}</div>}
+    <div className={styles.outputSocket}>
+      {showName && <div className={styles.socketName}>{name}</div>}
       {isFlowSocket && (
         <FontAwesomeIcon
           icon={faCaretRight}
           color="#ffffff"
           size="lg"
-          className="ml-1"
+          className={styles.flowIcon}
         />
       )}
 
@@ -41,7 +41,7 @@ export default function OutputSocket({
         id={name}
         type="source"
         position={Position.Right}
-        className={cx(borderColor, connected ? backgroundColor : "bg-gray-800")}
+        className={styles.handle}
         isValidConnection={(connection: Connection) =>
           isValidConnection(connection, instance)
         }
