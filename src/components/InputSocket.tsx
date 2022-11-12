@@ -7,7 +7,7 @@ import { InputSocketSpecJSON } from "behave-graph";
 import { isValidConnection } from "../util/isValidConnection";
 import { AutoSizeInput } from "./AutoSizeInput";
 import React from "react";
-
+import styles from "../style.scss"
 export type InputSocketProps = {
   connected: boolean;
   value: any | undefined;
@@ -34,7 +34,7 @@ export default function InputSocket({
   const showName = isFlowSocket === false || name !== "flow";
 
   return (
-    <div className="flex grow items-center justify-start h-7">
+    <div className={styles.InputSocket}>
       {isFlowSocket && (
         <FontAwesomeIcon icon={faCaretRight} color="#ffffff" size="lg" />
       )}
@@ -44,7 +44,7 @@ export default function InputSocket({
           {valueType === "string" && (
             <AutoSizeInput
               type="text"
-              className=" bg-gray-600 disabled:bg-gray-700 py-1 px-2 nodrag"
+              className={styles.inputField}
               value={String(value) ?? defaultValue ?? ""}
               onChange={(e) => onChange(name, e.currentTarget.value)}
             />
@@ -52,7 +52,7 @@ export default function InputSocket({
           {valueType === "number" && (
             <AutoSizeInput
               type="number"
-              className=" bg-gray-600 disabled:bg-gray-700 py-1 px-2 nodrag"
+              className={styles.inputField}
               value={String(value) ?? defaultValue ?? ""}
               onChange={(e) => onChange(name, e.currentTarget.value)}
             />
@@ -60,7 +60,7 @@ export default function InputSocket({
           {valueType === "float" && (
             <AutoSizeInput
               type="number"
-              className=" bg-gray-600 disabled:bg-gray-700 py-1 px-2 nodrag"
+              className={styles.inputField}
               value={String(value) ?? defaultValue ?? ""}
               onChange={(e) => onChange(name, e.currentTarget.value)}
             />
@@ -68,7 +68,7 @@ export default function InputSocket({
           {valueType === "integer" && (
             <AutoSizeInput
               type="number"
-              className=" bg-gray-600 disabled:bg-gray-700 py-1 px-2 nodrag"
+              className={styles.inputField}
               value={String(value) ?? defaultValue ?? ""}
               onChange={(e) => onChange(name, e.currentTarget.value)}
             />
@@ -76,7 +76,7 @@ export default function InputSocket({
           {valueType === "boolean" && (
             <input
               type="checkbox"
-              className=" bg-gray-600 disabled:bg-gray-700 py-1 px-2 nodrag"
+              className={styles.inputField}
               value={String(value) ?? defaultValue ?? ""}
               onChange={(e) => onChange(name, e.currentTarget.checked)}
             />
@@ -87,7 +87,7 @@ export default function InputSocket({
         id={name}
         type="target"
         position={Position.Left}
-        className={cx(borderColor, connected ? backgroundColor : "bg-gray-800")}
+        className={cx(borderColor, connected ? backgroundColor : styles.inputField)}
         isValidConnection={(connection: Connection) =>
           isValidConnection(connection, instance)
         }

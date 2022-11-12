@@ -6,6 +6,7 @@ import OutputSocket from "./OutputSocket";
 import { useChangeNodeData } from "../hooks/useChangeNodeData";
 import { isHandleConnected } from "../util/isHandleConnected";
 import React from "react";
+import styles from "../style.scss"
 
 type NodeProps = FlowNodeProps & {
   spec: NodeSpecJSON;
@@ -34,7 +35,7 @@ export const Node = ({ id, data, spec, selected }: NodeProps) => {
       {pairs.map(([input, output], ix) => (
         <div
           key={ix}
-          className="flex flex-row justify-between gap-8 relative px-2"
+          className={styles.node}
         >
           {input && (
             <InputSocket

@@ -4,6 +4,7 @@ import cx from "classnames";
 
 import { categoryColorMap, colors } from "../util/colors";
 import React from "react";
+import styles from "../style.scss"
 
 type NodeProps = {
   title: string;
@@ -23,14 +24,11 @@ export default function NodeContainer({
   }
   let [backgroundColor, borderColor, textColor] = colors[colorName];
   if (selected) {
-    borderColor = "border-gray-800";
+    borderColor = "";
   }
   return (
     <div
-      className={cx(
-        "rounded text-white text-sm bg-gray-800 min-w-[120px]",
-        selected && "outline outline-1"
-      )}
+      className={styles.nodeContainer}
     >
       <div className={`${backgroundColor} ${textColor} px-2 py-1 rounded-t`}>
         {title}

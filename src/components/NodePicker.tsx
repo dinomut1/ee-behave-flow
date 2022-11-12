@@ -4,7 +4,7 @@ import { useOnPressKey } from "../hooks/useOnPressKey";
 import rawSpecJson from "behave-graph/dist/node-spec.json";
 import { NodeSpecJSON } from "behave-graph";
 import React from "react";
-
+import styles from "../style.scss"
 const specJSON = rawSpecJson as NodeSpecJSON[];
 
 const nodes = specJSON;
@@ -48,25 +48,24 @@ const NodePicker = ({
 
   return (
     <div
-      className="node-picker absolute z-10 text-sm text-white bg-gray-800 border rounded border-gray-500"
+      className={styles.nodePicker}
       style={{ top: position.y, left: position.x }}
     >
-      <div className="bg-gray-500 p-2">Add Node</div>
-      <div className="p-2">
+      <div className={styles.addNode}>Add Node</div>
+      <div className={styles.search}>
         <input
           type="text"
           autoFocus
           placeholder="Type to filter"
-          className=" bg-gray-600 disabled:bg-gray-700 w-full py-1 px-2"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <div className="max-h-48 overflow-y-scroll">
+      <div className={styles.options}>
         {filtered.map(({ type }) => (
           <div
             key={type}
-            className="p-2 cursor-pointer border-b border-gray-600"
+            className={styles.option}
             onClick={() => onPickNode(type, instance.project(position))}
           >
             {type}
