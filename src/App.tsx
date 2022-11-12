@@ -20,7 +20,7 @@ import { calculateNewEdge } from "./util/calculateNewEdge";
 import React from "react";
 
 import "reactflow/dist/style.css";
-import "./index.css";
+import styles from "./style.scss";
 
 const graphJSON = rawGraphJSON as GraphJSON;
 
@@ -137,6 +137,7 @@ function Flow() {
         fitViewOptions={{ maxZoom: 1 }}
         onPaneClick={handlePaneClick}
         onPaneContextMenu={handlePaneContextMenu}
+        className={styles.GraphEditor}
       >
         <Controls />
         <Background
