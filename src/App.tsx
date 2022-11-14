@@ -1,4 +1,4 @@
-import React, { MouseEvent as ReactMouseEvent, useCallback, useState } from "react";
+import React, { MouseEvent as ReactMouseEvent, useCallback, useEffect, useMemo, useState } from "react";
 import ReactFlow, {
   Background,
   BackgroundVariant,
@@ -20,8 +20,9 @@ import { calculateNewEdge } from "./util/calculateNewEdge";
 
 import "reactflow/dist/style.css";
 import styles from "./styles.module.scss";
+import { flowToBehave } from "./transformers/flowToBehave";
 
-function Flow(graphJSON: GraphJSON) {
+function Flow(graphJSON: GraphJSON, onChangeGraph: (nuGraph: GraphJSON) => void = () => {}) {
   const [initialNodes, initialEdges] = behaveToFlow(graphJSON);
   const [nodePickerVisibility, setNodePickerVisibility] =
     useState<XYPosition>();
@@ -117,6 +118,12 @@ function Flow(graphJSON: GraphJSON) {
     e.preventDefault();
     setNodePickerVisibility({ x: e.clientX, y: e.clientY });
   };
+
+  const memoChanged = useMemo(() => flowToBehave(nodes, edges), [nodes, edges])
+
+  useEffect(() => {
+    onChangeGraph(memoChanged)
+  }, [nodes, edges])
 
   return (
     <React.StrictMode>
