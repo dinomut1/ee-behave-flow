@@ -21,11 +21,8 @@ import { calculateNewEdge } from "./util/calculateNewEdge";
 import "reactflow/dist/style.css";
 import styles from "./styles.module.scss";
 
-const graphJSON = rawGraphJSON as GraphJSON;
-
-const [initialNodes, initialEdges] = behaveToFlow(graphJSON);
-
-function Flow() {
+function Flow(graphJSON: GraphJSON) {
+  const [initialNodes, initialEdges] = behaveToFlow(graphJSON);
   const [nodePickerVisibility, setNodePickerVisibility] =
     useState<XYPosition>();
   const [lastConnectStart, setLastConnectStart] =
