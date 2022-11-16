@@ -22,7 +22,12 @@ import "reactflow/dist/style.css";
 import styles from "./styles.module.scss";
 import { flowToBehave } from "./transformers/flowToBehave";
 
-function Flow(graphJSON: GraphJSON, onChangeGraph: (nuGraph: GraphJSON) => void = () => {}) {
+export type FlowInputType = {
+  graphJSON: GraphJSON 
+  onChangeGraph?: (nuGraph: GraphJSON) => void
+}
+
+const Flow = ({ graphJSON, onChangeGraph }: FlowInputType ) => {
   const [initialNodes, initialEdges] = behaveToFlow(graphJSON);
   const [nodePickerVisibility, setNodePickerVisibility] =
     useState<XYPosition>();
@@ -122,7 +127,7 @@ function Flow(graphJSON: GraphJSON, onChangeGraph: (nuGraph: GraphJSON) => void 
   const memoChanged = useMemo(() => flowToBehave(nodes, edges), [nodes, edges])
 
   useEffect(() => {
-    onChangeGraph(memoChanged)
+    onChangeGraph?.(memoChanged)
   }, [nodes, edges])
 
   return (

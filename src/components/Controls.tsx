@@ -47,7 +47,6 @@ const CustomControls = () => {
 
     const engine = new Engine(graph);
 
-
     if (manualLifecycleEventEmitter.startEvent.listenerCount > 0) {
       manualLifecycleEventEmitter.startEvent.emit();
       await engine.executeAllAsync(5);
